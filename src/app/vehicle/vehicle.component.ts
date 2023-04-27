@@ -8,9 +8,6 @@ import { VehicleService } from './vehicle.service';
 })
 export class VehicleComponent implements OnInit {
   vehicles: Vehicle[] = [];
-  totalRenault: number = 0;
-  totalChevrolet: number = 0;
-  totalNissan: number = 0;
   totalByBrand: { [brand: string]: number } = {};
 
   constructor(private vehicleService: VehicleService) {}
