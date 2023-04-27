@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Vehicle } from './vehicle';
 import { VehicleService } from './vehicle.service';
-
 @Component({
   selector: 'app-vehicle',
   templateUrl: './vehicle.component.html',
@@ -9,12 +8,24 @@ import { VehicleService } from './vehicle.service';
 })
 export class VehicleComponent implements OnInit {
   vehicles: Vehicle[] = [];
+  totalRenault: number = 0;
+  totalChevrolet: number = 0;
+  totalNissan: number = 0;
+  totalByBrand: { [brand: string]: number } = {};
 
   constructor(private vehicleService: VehicleService) {}
 
   getVehicles() {
     this.vehicleService.getVehicles().subscribe((vehicles) => {
       this.vehicles = vehicles;
+      this.totalByBrand = vehicles.reduce<{ [brand: string]: number }>(
+        (summary, car) => {
+          const brand = car.marca;
+          summary[brand] = (summary[brand] || 0) + 1;
+          return summary;
+        },
+        {}
+      );
     });
   }
 
