@@ -1,3 +1,26 @@
-<p>
-  vehicle works!
-</p>
+<div class="container">
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Línea</th>
+        <th scope="col">Modelo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicle of vehicles">
+        <th>{{ vehicle.id }}</th>
+        <td>
+          <dd>{{ vehicle.marca }}</dd>
+        </td>
+        <td>
+          <dd>{{ vehicle.linea }}</dd>
+        </td>
+        <td>
+          <dd>{{ vehicle.modelo }}</dd>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
